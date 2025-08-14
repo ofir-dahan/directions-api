@@ -1,0 +1,6 @@
+@DirectionsApi_HostAddress = http://localhost:5244
+
+GET {{DirectionsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
