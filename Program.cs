@@ -60,6 +60,16 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
 });
 
+// Enable Swagger UI at /swagger as well
+app.MapWhen(context => context.Request.Path.StartsWithSegments("/swagger"), builder =>
+{
+    builder.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Directions API V1");
+        c.RoutePrefix = "swagger";
+    });
+});
+
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthorization();
