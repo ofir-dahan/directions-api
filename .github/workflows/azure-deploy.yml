@@ -24,13 +24,13 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore DirectionsApi.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build DirectionsApi.csproj --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish --configuration Release --no-build --output ./publish
+      run: dotnet publish DirectionsApi.csproj --configuration Release --no-build --output ./publish
 
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
